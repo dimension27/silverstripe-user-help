@@ -1,0 +1,13 @@
+Index: public/sapphire/forms/FormField.php
+===================================================================
+--- public/sapphire/forms/FormField.php	(revision 116192)
++++ public/sapphire/forms/FormField.php	(working copy)
+@@ -83,7 +83,7 @@
+ 	 */
+ 	function __construct($name, $title = null, $value = null, $form = null, $rightTitle = null) {
+ 		$this->name = $name;
+-		$this->title = ($title === null) ? $name : $title;
++		$this->title = ($title === null) ? $this->name_to_label($name) : $title;
+ 
+ 		if($value !== NULL) $this->setValue($value);
+ 		if($form) $this->setForm($form);

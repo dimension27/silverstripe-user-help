@@ -1,0 +1,5 @@
+# Install crontab
+
+Add the contents of config/crontab.txt to the crontab for the webserver user
+
+sudo -u [SERVER_USER] crontab -e

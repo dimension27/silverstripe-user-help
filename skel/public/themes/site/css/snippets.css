@@ -1,0 +1,67 @@
+/*
+ * Vertical align to center solution:
+ * <div class="vertCenter"><div class="bd"><div class="bd">
+ *   -- content goes here
+ * </div></div></div>
+ */ 
+.vertCenter {
+	height: 161px;
+	display: table;
+	#position: relative;
+	overflow: hidden;
+}
+.vertCenter .bd {
+	#position: absolute;
+	#top: 50%;
+	display: table-cell;
+	vertical-align: middle;
+}
+.vertCenter .bd .bd {
+	#position: relative;
+	#top: -50%;
+}
+
+/*
+ * Float left and right classes
+ */
+.floatLeft {
+	float: left;
+	margin-right: 10px;
+}
+.floatRight {
+	float: right;
+	margin-left: 10px;
+}
+IMG.floatLeft,
+IMG.floatRight {
+	margin-bottom: 10px;
+}
+
+/*
+ * Quotes and attribution
+ */
+.quote {
+	padding-left: .8em;
+}
+.quote:before {
+	content: "\201C";
+	margin-left: -0.5em;
+}
+.quote:after {
+	content: "\201D";
+}
+.attribution {
+	text-align: right;
+	margin-top: -.4em;
+	margin-bottom: 1em;
+	font-style: italic;
+}
+
+/*
+ * Text sizes
+ */
+.smallerText { font-size: 77%; }
+.smallText { font-size: 85%; }
+.normalText { font-size: 100%; }
+.largeText { font-size: 116%; }
+.largerText { font-size: 131%; }

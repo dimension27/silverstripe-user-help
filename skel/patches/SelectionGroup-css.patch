@@ -1,0 +1,13 @@
+Index: css/SelectionGroup.css
+===================================================================
+--- css/SelectionGroup.css	(revision 117600)
++++ css/SelectionGroup.css	(working copy)
+@@ -2,7 +2,7 @@
+ 	padding: 0px;
+ 	clear : both;
+ }
+-.SelectionGroup li {
++.SelectionGroup > li {
+ 	list-style-type: none;
+ 	float : left;
+ 	width: 100%;

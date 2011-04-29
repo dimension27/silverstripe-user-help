@@ -1,0 +1,147 @@
+/** 
+ * Based on SilverStripe Black Candy Theme
+ * Form Styling
+ */
+
+
+/* FIELDSETS
+---------------------------------------- */
+.ssForm fieldset {
+	border: 0;
+}
+
+/* ACTION BUTTONS
+---------------------------------------- */
+.ssForm input.action {
+	padding: 2px;
+	font-size: 11px ;
+	font-family: Verdana, Tahoma, Sans-serif;
+}
+.ssForm input.action:hover,
+.ssForm input.action:focus {
+	cursor: pointer;
+}
+
+/* FIELD FORMATING
+---------------------------------------- */
+.ssForm form ul {
+	list-style: none;
+}
+.ssForm .middleColumn {
+ 	display: block;
+ 	margin: 15px 10px 10px 0;
+	background: #E9E9E9;
+	padding: 4px;
+	width: 306px;
+	clear: left;
+}
+	.ssForm #Sidebar .middleColumn {
+		margin: 0 0 0 8px;
+		display: inline;
+	}
+	
+	.ssForm div.tab .field .middleColumn {
+		clear: none !important;
+ 		margin: 0 !important;
+		width: auto;
+	}
+	
+	.ssForm .middleColumn .middleColumn {
+		margin-left: 0;
+		margin-right: 0;
+		padding: 0;
+	}
+	
+	.ssForm .middleColumn .message {
+		margin: 0;
+	}
+	
+/* INPUT BOXS
+---------------------------------------- */
+.ssForm input.text,
+.ssForm textarea,
+.ssForm select {
+	padding: 2px;
+	border: 1px solid #A7A7A7;
+	color: #000;
+	font-size: 12px;
+	font-weight: bold;
+	width: 300px;
+}
+
+.ssForm textarea {
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 12px;
+}
+.ssForm input:focus span, 
+.ssForm textarea:focus span {
+	border: 3px solid #000;
+}
+
+.ssForm form .date input.month,
+.ssForm form .date input.day,
+.ssForm form .date input.year {
+	width: auto;
+}
+
+.ssForm form .datetime .clear {
+	clear: both;
+}
+
+.ssForm form .datetime .date,
+.ssForm form .datetime .time {
+	float: left;
+	clear: none;
+	width: auto;
+}
+	.ssForm form .datetime .middleColumn .middleColumn {
+		width: auto;
+	}
+	.ssForm form .datetime .date input,
+	.ssForm form .datetime .time input {
+		width: auto;
+	}
+
+
+/* SELECT DROPDOWN
+---------------------------------------- */
+
+.ssForm select {
+	width: auto;
+}
+
+/* LABELS
+---------------------------------------- */
+.typography .ssForm label {
+ 	display: block;
+	margin: 0 0 -10px 0;
+	color: #777;
+	font-size: 12px;
+}
+
+.typography .ssForm label.required {
+    margin: 0;
+    color: red;
+}
+
+.ssForm label.right {
+	display:inline;
+}
+
+/* CHECKBOXES
+---------------------------------------- */
+.ssForm ul.optionset {
+	margin: 0;
+	overflow: hidden;
+}
+	.ssForm ul.optionset li {
+		margin: 6px 0;
+		clear: both;
+	}
+		.ssForm ul.optionset li input {
+			float: left;
+			margin: 0 6px;
+		}
+		.ssForm ul.optionset li label {
+			margin: 0;
+		}

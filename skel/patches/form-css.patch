@@ -1,0 +1,13 @@
+Index: css/Form.css
+===================================================================
+--- css/Form.css	(revision 116814)
++++ css/Form.css	(working copy)
+@@ -40,8 +40,6 @@
+ form .error,
+ form .required
+ {
+-	border: 1px solid #f00;
+-	background: #fcc;
+ 	padding: 0.5em;
+ 	width: 50%;
+ }

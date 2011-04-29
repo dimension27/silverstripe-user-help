@@ -1,0 +1,17 @@
+/*
+ * Styling for content. This file is also used in TinyMCE editors.
+ * It is important to import the typography.css file because this is used for image alignment.
+ */
+@import url(typography.css);
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+a,
+body.mceContentBody a,
+a:visited {
+	/* link styling goes here */
+}
+a:hover {
+}

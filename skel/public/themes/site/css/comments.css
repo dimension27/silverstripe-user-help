@@ -1,0 +1,56 @@
+#CommentHolder ul {
+	list-style: none;
+	margin: 20px 0;
+}
+
+#PageComments > li {
+	margin: 5px 0;
+	padding: 1px 10px 1px 40px;
+	width: 88%;
+	list-style: none;
+	background: url(../images/common/commentBg.png) no-repeat 1% 10%;
+	border-bottom: 2px solid #ccc;
+}
+
+.actionLinks li {
+	display: inline;
+	border-right: 1px solid #ddd;
+}
+
+.actionLinks li a {
+	padding-right: 3px;
+	font-size: 10px;
+}
+
+.actionLinks li.last {
+	border-right: none;
+}
+
+.commentrss {
+	background: transparent url(../images/common/feed-icon-14x14.png) no-repeat;
+	padding-left: 20px;
+	font-size: 1.1em;
+	line-height: 1.6em;
+}
+
+#PageCommentsPagination p {
+	text-align: center;
+	font-size: 1.2em;
+}
+
+#PageComments p {
+	font-size: 1em;
+	margin: 8px 0;
+}
+
+#PageComments p.info {
+	color: #999;
+	margin: 0px;
+	padding: 0;
+	line-height: 1em;
+	font-size: 0.9em;
+}
+
+#PageCommentInterface_Form_PostCommentForm_action_postcomment {
+	margin-bottom: 20px;
+}

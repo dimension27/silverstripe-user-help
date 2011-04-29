@@ -1,0 +1,27 @@
+Index: dev/Debug.php
+===================================================================
+--- dev/Debug.php	(revision 117853)
++++ dev/Debug.php	(working copy)
+@@ -633,6 +633,22 @@
+ 		header("Location: " . Director::baseURL() . "Security/login");
+ 		die();
+ 	}
++	
++	/**
++	 * Turn on or off sql debugging.
++	 * 
++	 * @param bool $on      If true, output queries, false turn off query output.
++	 * @return void
++	 * @author Alex Hayes <alex.hayes@dimension27.com>
++	 */
++	static function sql($on = true) {
++		if($on) {
++			$_REQUEST['showqueries'] = true;
++		} else {
++			unset($_REQUEST['showqueries']);
++		}
++	}
++	
+ }
+ 
+ 

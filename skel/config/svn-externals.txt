@@ -1,0 +1,40 @@
+# You can apply changes to this file using:
+# sudo true && svn propset svn:externals . --file config/svn-externals.txt && svn up && ./script/sake.sh dev/build
+
+# SilverStripe core:
+public/sapphire                            http://svn.silverstripe.com/open/modules/sapphire/tags/2.4.5
+public/cms                                 http://svn.silverstripe.com/open/modules/cms/tags/2.4.5
+
+# The usual suspects:
+public/dataobject_manager -r540            http://carlinowebdesign.svn.beanstalkapp.com/modules/trunk/dataobject_manager
+public/uploadify -r511                     http://carlinowebdesign.svn.beanstalkapp.com/modules/trunk/uploadify
+public/hideemail                           https://dimension27.googlecode.com/svn/silverstripe/hideemail/trunk
+public/themes/site/images/icons            http://svn.silverstripe.com/open/themes/blackcandy/branches/2.4/blackcandy/images/icons
+public/googleanalytics -r45                  https://svn.github.com/silverstripe-labs/silverstripe-googleanalytics.git
+public/googlesitemaps -r26                 https://svn.github.com/silverstripe-labs/silverstripe-googlesitemaps.git
+
+# D27 patches
+patches                                    https://dimension27.unfuddle.com/svn/dimension27_silverstripe-skel/trunk/patches
+public/ss-tools                            https://dimension27.unfuddle.com/svn/dimension27_silverstripe-skel/trunk/public/ss-tools
+
+# Externals for the blog module with mollom and spam protection:
+# public/blog                                http://svn.silverstripe.com/open/modules/blog/tags/0.4.1
+# public/mollom                              http://svn.silverstripe.com/open/modules/mollom/tags/0.3
+# public/spamprotection                      http://svn.silverstripe.com/open/modules/spamprotection/tags/0.3
+
+# Externals for subsites module
+# public/subsites -r115281                     http://svn.silverstripe.com/open/modules/subsites/trunk
+# genericdataadmin is required for subsites
+# public/genericdataadmin                      http://svn.silverstripe.com/open/modules/genericdataadmin/tags/rc
+
+# Other assorted externals
+# public/themes/prototype                    http://svn.silverstripe.com/open/themes/prototype/trunk
+# public/themes/blackcandy                   http://svn.silverstripe.com/open/themes/blackcandy/branches/2.4
+# public/mobile                              http://svn.silverstripe.com/open/modules/mobile/tags/0.5
+# public/event_calendar                      http://bluehousegroup.svn.beanstalkapp.com/modules/trunk/event_calendar
+# public/newsletter                          http://svn.silverstripe.com/open/modules/newsletter/tags/rc/0.4.0-rc1
+# public/flickrservice                       http://svn.silverstripe.com/open/modules/flickrservice/tags/0.3
+# public/image_gallery                       http://carlinowebdesign.svn.beanstalkapp.com/modules/trunk/image_gallery
+# public/TwitterWidgetPack                   http://polemic.net.nz/svn/silverstripe/widgets/TwitterWidgetPack/tags/0.11
+# public/userforms                           http://svn.silverstripe.com/open/modules/userforms/tags/0.3.0
+# public/cmsworkflow                         http://svn.silverstripe.com/open/modules/cmsworkflow/tags/rc/1.0-rc4/

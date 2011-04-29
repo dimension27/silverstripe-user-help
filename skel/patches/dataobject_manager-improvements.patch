@@ -1,0 +1,43 @@
+Index: code/DataObjectManager.php
+===================================================================
+--- code/DataObjectManager.php	(revision 540)
++++ code/DataObjectManager.php	(working copy)
+@@ -785,11 +785,12 @@
+ 		$this->dataObject = $dataObject;
+ 		Requirements::clear();
+ 		Requirements::clear_combined_files();
++		// added prototype.js to provide support for TreeDropdownField
++		Requirements::javascript(THIRDPARTY_DIR.'/prototype/prototype.js');
+ 	    Requirements::javascript(THIRDPARTY_DIR.'/jquery/jquery.js');
+ 		Requirements::javascript(THIRDPARTY_DIR.'/jquery-livequery/jquery.livequery.js');    
+ 		Requirements::block(THIRDPARTY_DIR.'/behaviour.js');
+ 		Requirements::block(SAPPHIRE_DIR.'/javascript/Validator.js');
+-		Requirements::block(THIRDPARTY_DIR.'/prototype.js');
+ 		Requirements::clear(THIRDPARTY_DIR.'/behavior.js');
+ 		Requirements::block(THIRDPARTY_DIR.'/behavior.js');
+ 		Requirements::block(SAPPHIRE_DIR.'/javascript/ComplexTableField.js');
+Index: code/simple_tinymce_field/SimpleTinyMCEField.php
+===================================================================
+--- code/simple_tinymce_field/SimpleTinyMCEField.php	(revision 540)
++++ code/simple_tinymce_field/SimpleTinyMCEField.php	(working copy)
+@@ -183,7 +183,7 @@
+   private function buildJS()
+   {
+     $js = sprintf("
+-      $(function() {
++      jQuery(function($) {
+ 				$('#%s').tinymce({
+   				  plugins : '%s',
+   				  theme : '%s',
+Index: code/simple_html_editor_field/SimpleHTMLEditorField.php
+===================================================================
+--- code/simple_html_editor_field/SimpleHTMLEditorField.php	(revision 540)
++++ code/simple_html_editor_field/SimpleHTMLEditorField.php	(working copy)
+@@ -72,6 +72,7 @@
+ 	
+ 	public function FieldHolder()
+ 	{
++		Requirements::javascript(THIRDPARTY_DIR."/jquery/jquery.js");
+ 		Requirements::javascript('dataobject_manager/javascript/jquery.wysiwyg.js');
+ 		Requirements::css('dataobject_manager/css/jquery.wysiwyg.css');
+ 		Requirements::customScript("

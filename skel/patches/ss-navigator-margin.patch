@@ -1,0 +1,11 @@
+Index: css/SilverStripeNavigator.css
+===================================================================
+--- css/SilverStripeNavigator.css	(revision 115988)
++++ css/SilverStripeNavigator.css	(working copy)
+@@ -1,3 +1,6 @@
++body {
++	margin-bottom: 22px;
++}
+ 
+ #SilverStripeNavigator {
+ 	position: fixed;

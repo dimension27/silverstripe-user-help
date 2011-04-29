@@ -1,0 +1,65 @@
+<IfModule mod_rewrite.c>
+	# RewriteEngine On
+	# Match domain.com.au with no www or with "live." at the start
+	# RewriteCond %{HTTP_HOST} ^illuminateyoga.com.au(:[0-9]+)? [NC]
+	# And redirect any request to www.domain.com.au with the port (if specified)
+	# with an HTTP 301 code (R=301). This is the last rule for these conditions (L)
+	# RewriteRule ^(.*) http://www.illuminateyoga.com.au%1/$1 [R=301,L]
+</IfModule>
+
+# Prevent requests to favicon.ico
+<IfModule mod_rewrite.c>
+	# RewriteCond %{THE_REQUEST} favicon.ico [NC]
+	# RewriteRule (.*) /favicon.ico [R=403,L] 
+</IfModule>
+
+### SILVERSTRIPE START ###
+<Files *.ss>
+	Order deny,allow
+	Deny from all
+	Allow from 127.0.0.1
+</Files>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase @@BASE_URI@@
+	RewriteCond %{REQUEST_URI} ^(.*)$
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule .* sapphire/static-main.php?url=%1&%{QUERY_STRING} [L]
+</IfModule>
+### SILVERSTRIPE END ###
+
+# php5_module configuration
+<IfModule php5_module>
+	php_value session.use_only_cookies false
+	php_value log_errors true
+	php_value error_log "@@BASE_PATH@@/logs/php-error.log"
+	php_value error_reporting 65535
+	php_value upload_max_filesize 20M
+</IfModule>
+
+# deflate_module configuration
+<IfModule deflate_module>
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/x-javascript
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+	BrowserMatch ^Mozilla/4\.0[678] no-gzip
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# mod_expires configuration
+<IfModule mod_expires.c>
+  # Enable expirations.
+  ExpiresActive On
+
+  # Cache all files for 2 weeks after access (A).
+  ExpiresDefault A1209600
+
+  <FilesMatch \.php$>
+    # Do not allow PHP scripts to be cached unless they explicitly send cache
+    # headers themselves. Otherwise all scripts would have to overwrite the
+    # headers set by mod_expires if they want another caching behavior. This may
+    # fail if an error occurs early in the bootstrap process, and it may cause
+    # problems if a non-Drupal PHP file is installed in a subdirectory.
+    ExpiresActive Off
+  </FilesMatch>
+</IfModule>

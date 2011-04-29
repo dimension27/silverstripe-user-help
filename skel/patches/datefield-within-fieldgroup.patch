@@ -1,0 +1,52 @@
+Index: forms/DateField.php
+===================================================================
+--- forms/DateField.php	(revision 117368)
++++ forms/DateField.php	(working copy)
+@@ -85,6 +85,21 @@
+ 		parent::__construct($name, $title, $value, $form, $rightTitle);
+ 	}
+ 
++	/**
++	 * Returns a restricted field holder used within things like FieldGroups.
++	 * 
++	 * @note This method has been added so that 'showcalendar' is supported when pushing a DateField
++	 *       onto a FieldGroup.
++	 * @author Simon Wade <simon.wade@dimension27.com>
++	 */
++	function SmallFieldHolder() {
++		$d = Object::create('DateField_View_JQuery', $this); 
++		$d->onBeforeRender();
++		$html = "<div class=\"date ".$this->XML_val('extraClass')."\">".parent::SmallFieldHolder().'</div>'; 
++		$html = $d->onAfterRender($html); 
++		return $html;
++	}
++	
+ 	function FieldHolder() {
+ 		// TODO Replace with properly extensible view helper system 
+ 		$d = Object::create('DateField_View_JQuery', $this); 
+@@ -543,7 +558,7 @@
+ 	 * @param String $html
+ 	 * @return 
+ 	 */
+-	function onAfterRender($html) {
++	function onAfterRender($html) {	
+ 		if($this->getField()->getConfig('showcalendar')) {
+ 			Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
+ 			Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');	
+Index: javascript/DateField.js
+===================================================================
+--- javascript/DateField.js	(revision 117368)
++++ javascript/DateField.js	(working copy)
+@@ -1,6 +1,10 @@
+ (function($) {
+-	$('.field.date input.text').live('click', function() {
+-		var holder = $(this).parents('.field.date:first'), config = holder.metadata();
++	/**
++	 * @note This method has been added so that 'showcalendar' is supported when pushing a DateField
++	 *       onto a FieldGroup.
++	 */
++	$('.field.date input.text, .fieldgroupField .date input.text').live('click', function() {
++		var holder = $(this).parents('.field.date:first, .fieldgroupField .date:first'), config = holder.metadata();
+ 		if(!config.showcalendar) return;
+ 		
+ 		if(config.locale && $.datepicker.regional[config.locale]) {

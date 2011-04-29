@@ -1,0 +1,2 @@
+MAILTO=admin@dimension27.com
+0    0    *    *    *    cd "@@BASE_PATH@@/public" && rm -rf cache/* && ./sapphire/sake dev/buildcache flush=all > /dev/null

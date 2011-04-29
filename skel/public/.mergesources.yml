@@ -1,0 +1,3 @@
+# Data source for the "arb" svn merge tool (see http://github.com/sminnee/arborist).
+silverstripe-skel:
+  mysite: /trunk/public/mysite

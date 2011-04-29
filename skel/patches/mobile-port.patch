@@ -1,0 +1,14 @@
+Index: code/MobileSiteControllerExtension.php
+===================================================================
+--- code/MobileSiteControllerExtension.php	(revision 113523)
++++ code/MobileSiteControllerExtension.php	(working copy)
+@@ -57,6 +57,9 @@
+ 	public function onMobileDomain() {
+ 		$config = SiteConfig::current_site_config();
+ 		$parts = parse_url($config->MobileDomain);
++		if( $parts['port'] != 80 ) {
++			$parts['host'] .= ':'.$parts['port'];
++		}
+ 		if(isset($parts['host']) && $parts['host'] == $_SERVER['HTTP_HOST']) {
+ 			return true;
+ 		} else {

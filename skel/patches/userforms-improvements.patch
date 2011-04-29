@@ -1,0 +1,163 @@
+Index: lang/en_US.php
+===================================================================
+--- lang/en_US.php	(revision 117291)
++++ lang/en_US.php	(working copy)
+@@ -244,6 +244,7 @@
+ $lang['en_US']['UserDefinedForm']['SAVESUBMISSIONS'] = 'Disable Saving Submissions to Server';
+ $lang['en_US']['UserDefinedForm']['SENDEMAILTO'] = 'Send Email To';
+ $lang['en_US']['UserDefinedForm']['SENDPLAIN'] = 'Send Email as Plain Text (HTML will be stripped)';
++$lang['en_US']['UserDefinedForm']['BODY'] = 'Body';
+ $lang['en_US']['UserDefinedForm']['SHOWCLEARFORM'] = 'Show Clear Form Button';
+ $lang['en_US']['UserDefinedForm']['SINGULARNAME'] = array(
+ 	'User Defined Form',
+Index: code/UserDefinedForm.php
+===================================================================
+--- code/UserDefinedForm.php	(revision 117291)
++++ code/UserDefinedForm.php	(working copy)
+@@ -61,6 +61,7 @@
+ 	 * @return FieldSet
+ 	 */
+ 	public function getCMSFields() {
++		self::disableCMSFieldsExtensions();
+ 		$fields = parent::getCMSFields();
+ 
+ 		// define tabs
+@@ -100,6 +101,9 @@
+ 		
+ 		$fields->addFieldsToTab("Root.Content.OnComplete", $onCompleteFieldSet);
+ 		
++		self::enableCMSFieldsExtensions();
++		$this->extend('updateCMSFields', $fields);
++		
+ 		return $fields;
+ 	}
+ 	
+@@ -270,10 +274,10 @@
+ 	 * @return Array
+ 	 */
+ 	public function index() {
+-		if($this->Content && $form = $this->Form()) {
+-			$hasLocation = stristr($this->Content, '$UserDefinedForm');
++		if(($content = $this->Content()) && $form = $this->Form()) {
++			$hasLocation = stristr($content, '$UserDefinedForm');
+ 			if($hasLocation) {
+-				$content = str_ireplace('$UserDefinedForm', $form->forTemplate(), $this->Content);
++				$content = str_ireplace('$UserDefinedForm', $form->forTemplate(), $content);
+ 				return array(
+ 					'Content' => DBField::create('HTMLText', $content),
+ 					'Form' => ""
+@@ -281,7 +285,7 @@
+ 			}
+ 		}
+ 		return array(
+-			'Content' => $this->Content,
++			'Content' => $content,
+ 			'Form' => $this->Form
+ 		);
+ 	}
+@@ -512,6 +516,16 @@
+ 	 * @return Redirection
+ 	 */
+ 	function process($data, $form) {
++		$submittedForm = $this->processUserDefinedForm($data, $form);
++		return Director::redirect($this->Link() . 'finished?referrer=' . urlencode($data['Referrer']));
++	}
++	/**
++	 * Process the Form Data.
++	 * @param Array Data
++	 * @param Form Form
++	 * @return SubmittedForm
++	 */
++	function processUserDefinedForm($data, $form) {
+ 		// submitted form object
+ 		$submittedForm = new SubmittedForm();
+ 		$submittedForm->SubmittedByID = ($id = Member::currentUserID()) ? $id : 0;
+@@ -566,14 +580,11 @@
+ 			
+ 			$submittedFields->push($submittedField);
+ 		}	
+-		$emailData = array(
+-			"Sender" => Member::currentUser(),
+-			"Fields" => $submittedFields
+-		);
+-
++		$emailData = $this->getEmailData($submittedFields);
++		
+ 		// email users on submit. All have their own custom options. 
+ 		if($this->EmailRecipients()) {
+-			$email = new UserDefinedForm_SubmittedFormEmail($submittedFields);                     
++			$email = $this->getSubmittedFormEmail($submittedFields);
+ 			$email->populateTemplate($emailData);
+ 			if($attachments){
+ 				foreach($attachments as $file){
+@@ -607,7 +618,7 @@
+ 						$email->setTo($submittedFormField->Value);	
+ 					}
+ 				}
+-				
++				$recipient->extend('onBeforeSend', $email);
+ 				if($recipient->SendPlain) {
+ 					$body = strip_tags($recipient->EmailBody) . "\n ";
+ 					if(isset($emailData['Fields']) && !$recipient->HideFormData) {
+@@ -619,14 +630,24 @@
+ 					$email->sendPlain();
+ 				}
+ 				else {
+-					$email->send();	
++					$email->send();
+ 				}
+ 			}
+ 		}
+-			
+-		return Director::redirect($this->Link() . 'finished?referrer=' . urlencode($data['Referrer']));
++		return $submittedForm;
+ 	}
+ 
++	function getEmailData( DataObjectSet $submittedFields ) {
++		return array(
++			"Sender" => Member::currentUser(),
++			"Fields" => $submittedFields
++		);
++	}
++
++	function getSubmittedFormEmail( DataObjectSet $submittedFields ) {
++		return new UserDefinedForm_SubmittedFormEmail($submittedFields);
++	}
++
+ 	/**
+ 	 * This action handles rendering the "finished" message,
+ 	 * which is customisable by editing the ReceivedFormSubmission.ss
+@@ -682,7 +703,7 @@
+ 			new TextField('EmailAddress', _t('UserDefinedForm.SENDEMAILTO','Send Email To')),
+ 			new CheckboxField('HideFormData', _t('UserDefinedForm.HIDEFORMDATA', 'Hide Form Data from Email')),
+ 			new CheckboxField('SendPlain', _t('UserDefinedForm.SENDPLAIN', 'Send Email as Plain Text (HTML will be stripped)')),
+-			new TextareaField('EmailBody', 'Body')
++			new TextareaField('EmailBody', _t('UserDefinedForm.BODY', 'Body'))
+ 		);
+ 		
+ 		if($this->Form()) {
+@@ -708,7 +729,8 @@
+ 				$fields->insertAfter(new DropdownField('SendEmailToFieldID', _t('UserDefinedForm.ORSELECTAFIELDTOUSEASTO', '.. or Select a Field to use as the To Address'), $multiOptionFields, '', null, ""), 'EmailAddress');
+ 			}
+ 		}
+-
++		$this->extend('updateCMSFields', $fields);
++		
+ 		return $fields;
+ 	}
+ 	
+@@ -719,6 +741,7 @@
+ 	function canDelete() {
+ 		return $this->Form()->canDelete();
+ 	}
++
+ }
+ 
+ /**
+@@ -735,4 +758,4 @@
+ 	function __construct() {
+ 		parent::__construct();
+ 	}
+-}
+\ No newline at end of file
++}
