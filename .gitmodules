@@ -1,3 +1,6 @@
 [submodule "skel/public/cms"]
 	path = skel/public/cms
 	url = git@github.com:dimension27/silverstripe-cms.git
+[submodule "skel/public/sapphire"]
+	path = skel/public/sapphire
+	url = git@github.com:dimension27/sapphire.git
