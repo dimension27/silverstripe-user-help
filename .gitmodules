@@ -4,3 +4,6 @@
 [submodule "skel/public/sapphire"]
 	path = skel/public/sapphire
 	url = git@github.com:dimension27/sapphire.git
+[submodule "skel/public/dataobject_manager"]
+	path = skel/public/dataobject_manager
+	url = git@github.com:dimension27/DataObjectManager.git
