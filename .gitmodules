@@ -7,3 +7,6 @@
 [submodule "skel/public/dataobject_manager"]
 	path = skel/public/dataobject_manager
 	url = git@github.com:dimension27/DataObjectManager.git
+[submodule "skel/public/uploadify"]
+	path = skel/public/uploadify
+	url = git@github.com:dimension27/Uploadify.git
