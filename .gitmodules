@@ -10,3 +10,6 @@
 [submodule "skel/public/uploadify"]
 	path = skel/public/uploadify
 	url = git@github.com:dimension27/Uploadify.git
+[submodule "skel/public/hideemail"]
+	path = skel/public/hideemail
+	url = git@github.com:dimension27/silverstripe-hideemail.git
