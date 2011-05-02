@@ -13,3 +13,6 @@
 [submodule "skel/public/hideemail"]
 	path = skel/public/hideemail
 	url = git@github.com:dimension27/silverstripe-hideemail.git
+[submodule "skel/public/userforms"]
+	path = skel/public/userforms
+	url = git@github.com:dimension27/silverstripe-userforms.git
