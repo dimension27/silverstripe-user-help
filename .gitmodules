@@ -19,3 +19,6 @@
 [submodule "skel/public/googleanalytics"]
 	path = skel/public/googleanalytics
 	url = git@github.com:dimension27/silverstripe-googleanalytics.git
+[submodule "skel/public/googlesitemaps"]
+	path = skel/public/googlesitemaps
+	url = git@github.com:dimension27/silverstripe-googlesitemaps.git
