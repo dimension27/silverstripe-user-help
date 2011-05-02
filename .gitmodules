@@ -16,3 +16,6 @@
 [submodule "skel/public/userforms"]
 	path = skel/public/userforms
 	url = git@github.com:dimension27/silverstripe-userforms.git
+[submodule "skel/public/googleanalytics"]
+	path = skel/public/googleanalytics
+	url = git@github.com:dimension27/silverstripe-googleanalytics.git
