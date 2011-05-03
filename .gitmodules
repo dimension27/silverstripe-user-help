@@ -1,3 +1,6 @@
 [submodule "public/sapphire"]
 	path = public/sapphire
 	url = git@github.com:dimension27/sapphire.git
+[submodule "public/cms"]
+	path = public/cms
+	url = git@github.com:dimension27/silverstripe-cms.git
