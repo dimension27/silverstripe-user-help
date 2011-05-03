@@ -1,9 +1,0 @@
-[submodule "public/sapphire"]
-	path = public/sapphire
-	url = https://dimension27@github.com/dimension27/sapphire.git
-[submodule "public/cms"]
-	path = public/cms
-	url = https://dimension27@github.com/dimension27/silverstripe-cms.git
-[submodule "public/dataobject_manager"]
-	path = public/dataobject_manager
-	url = https://dimension27@github.com/dimension27/DataObjectManager.git
