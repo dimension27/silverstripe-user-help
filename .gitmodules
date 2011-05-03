@@ -25,3 +25,6 @@
 [submodule "skel/public/themes/silverstripe-blackcandy"]
 	path = skel/public/themes/silverstripe-blackcandy
 	url = git@github.com:dimension27/silverstripe-blackcandy.git
+[submodule "skel/public/ss-tools"]
+	path = skel/public/ss-tools
+	url = git@github.com:dimension27/silverstripe-tools.git
