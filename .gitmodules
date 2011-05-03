@@ -16,3 +16,6 @@
 [submodule "public/userforms"]
 	path = public/userforms
 	url = git@github.com:dimension27/silverstripe-userforms.git
+[submodule "public/googleanalytics"]
+	path = public/googleanalytics
+	url = git@github.com:dimension27/silverstripe-googleanalytics.git
