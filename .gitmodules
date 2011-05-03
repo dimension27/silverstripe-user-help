@@ -7,3 +7,6 @@
 [submodule "public/dataobject_manager"]
 	path = public/dataobject_manager
 	url = git@github.com:dimension27/DataObjectManager.git
+[submodule "public/uploadify"]
+	path = public/uploadify
+	url = git@github.com:dimension27/Uploadify.git
