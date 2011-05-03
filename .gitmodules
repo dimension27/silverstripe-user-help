@@ -22,3 +22,6 @@
 [submodule "skel/public/googlesitemaps"]
 	path = skel/public/googlesitemaps
 	url = git@github.com:dimension27/silverstripe-googlesitemaps.git
+[submodule "skel/public/themes/silverstripe-blackcandy"]
+	path = skel/public/themes/silverstripe-blackcandy
+	url = git@github.com:dimension27/silverstripe-blackcandy.git
