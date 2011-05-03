@@ -1,30 +1,30 @@
-[submodule "skel/public/cms"]
-	path = skel/public/cms
+[submodule "public/cms"]
+	path = public/cms
 	url = git@github.com:dimension27/silverstripe-cms.git
-[submodule "skel/public/sapphire"]
-	path = skel/public/sapphire
+[submodule "public/sapphire"]
+	path = public/sapphire
 	url = git@github.com:dimension27/sapphire.git
-[submodule "skel/public/dataobject_manager"]
-	path = skel/public/dataobject_manager
+[submodule "public/dataobject_manager"]
+	path = public/dataobject_manager
 	url = git@github.com:dimension27/DataObjectManager.git
-[submodule "skel/public/uploadify"]
-	path = skel/public/uploadify
+[submodule "public/uploadify"]
+	path = public/uploadify
 	url = git@github.com:dimension27/Uploadify.git
-[submodule "skel/public/hideemail"]
-	path = skel/public/hideemail
+[submodule "public/hideemail"]
+	path = public/hideemail
 	url = git@github.com:dimension27/silverstripe-hideemail.git
-[submodule "skel/public/userforms"]
-	path = skel/public/userforms
+[submodule "public/userforms"]
+	path = public/userforms
 	url = git@github.com:dimension27/silverstripe-userforms.git
-[submodule "skel/public/googleanalytics"]
-	path = skel/public/googleanalytics
+[submodule "public/googleanalytics"]
+	path = public/googleanalytics
 	url = git@github.com:dimension27/silverstripe-googleanalytics.git
-[submodule "skel/public/googlesitemaps"]
-	path = skel/public/googlesitemaps
+[submodule "public/googlesitemaps"]
+	path = public/googlesitemaps
 	url = git@github.com:dimension27/silverstripe-googlesitemaps.git
-[submodule "skel/public/themes/silverstripe-blackcandy"]
-	path = skel/public/themes/silverstripe-blackcandy
+[submodule "public/themes/silverstripe-blackcandy"]
+	path = public/themes/silverstripe-blackcandy
 	url = git@github.com:dimension27/silverstripe-blackcandy.git
-[submodule "skel/public/ss-tools"]
-	path = skel/public/ss-tools
+[submodule "public/ss-tools"]
+	path = public/ss-tools
 	url = git@github.com:dimension27/silverstripe-tools.git
