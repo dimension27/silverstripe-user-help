@@ -1,0 +1,3 @@
+[submodule "public/sapphire"]
+	path = public/sapphire
+	url = git@github.com:dimension27/sapphire.git
