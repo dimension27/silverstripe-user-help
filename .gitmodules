@@ -10,3 +10,6 @@
 [submodule "public/uploadify"]
 	path = public/uploadify
 	url = git@github.com:dimension27/Uploadify.git
+[submodule "public/hideemail"]
+	path = public/hideemail
+	url = git@github.com:dimension27/silverstripe-hideemail.git
