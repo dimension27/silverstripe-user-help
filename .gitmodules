@@ -13,3 +13,6 @@
 [submodule "public/hideemail"]
 	path = public/hideemail
 	url = git@github.com:dimension27/silverstripe-hideemail.git
+[submodule "public/userforms"]
+	path = public/userforms
+	url = git@github.com:dimension27/silverstripe-userforms.git
