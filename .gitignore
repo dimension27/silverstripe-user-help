@@ -22,3 +22,4 @@ public/silverstripe-cache/*
 script/apachectl
 script/env.php
 script/env.sh
+diff.txt
