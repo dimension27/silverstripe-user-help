@@ -66,12 +66,12 @@ elif [ -n "$*" ]; then
 		fi
 		if [ -z "$alreadyThere" ]; then
 			if [ -n "$verbose" ]; then
-				echo "Ignoring '$fileBaseName' in '$fileDirName'"
+				echo "Added '$fileName'"
 			fi
 			svn -q propset svn:ignore "$currentProperty$fileBaseName" "$fileDirName" 
 		else
 			if [ -n "$verbose" ]; then
-				echo "'$fileBaseName' is already ignored in '$fileDirName'"
+				echo "Already ignoring '$fileName'"
 			fi
 		fi
 	done
