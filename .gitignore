@@ -12,12 +12,7 @@ logs/*.lock.*
 logs/*.pid
 public/.htaccess-default
 public/.htaccess
-public/assets/_combinedfiles
-public/assets/Uploads/*
-public/assets/*
-public/cache/*
 public/mysite/_config.php
-public/themes/site/_combined/*
 public/silverstripe-cache/*
 script/apachectl
 script/env.php

@@ -42,15 +42,15 @@
 # Project-specific modules
 #
 
-[submodule "public/userforms"]
-	path = public/userforms
-	url = git@github.com:dimension27/silverstripe-userforms.git
-[submodule "public/subsites"]
-	path = public/subsites
-	url = git@github.com:silverstripe/silverstripe-subsites.git
-[submodule "public/newsletter"]
-	path = public/newsletter
-	url = git@github.com:silverstripe-labs/silverstripe-newsletter.git
+# [submodule "public/userforms"]
+# 	path = public/userforms
+# 	url = git@github.com:dimension27/silverstripe-userforms.git
+# [submodule "public/subsites"]
+# 	path = public/subsites
+# 	url = git@github.com:silverstripe/silverstripe-subsites.git
+# [submodule "public/newsletter"]
+# 	path = public/newsletter
+# 	url = git@github.com:silverstripe-labs/silverstripe-newsletter.git
 # [submodule "public/mobile"]
 #	path = public/mobile
 #	url = git@github.com:silverstripe/silverstripe-mobile.git
