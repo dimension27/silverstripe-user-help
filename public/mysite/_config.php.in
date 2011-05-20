@@ -49,8 +49,6 @@ FulltextSearchable::enable();
 /*
  * Google Analytics settings.
  */
-GoogleLogger::activate('SiteConfig'); // configure from SiteConfig
-GoogleAnalyzer::activate('SiteConfig'); // configure from SiteConfig
 // GoogleLogger::activate('UA-22111211-1'); // hard-code ID
 // GoogleAnalyzer::activate('22111211', "[USERNAME]", "[PASSWORD]"); // hard-code ID and login
 
