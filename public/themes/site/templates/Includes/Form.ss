@@ -1,6 +1,5 @@
-<% require themedCSS(Form) %>
 <% require themedCSS(theme-form) %>
-<div class="ssForm gridCell colSpan3 heightAuto">
+<div class="ssForm">
 	<% if IncludeFormTag %>
 	<form $FormAttributes>
 	<% end_if %>

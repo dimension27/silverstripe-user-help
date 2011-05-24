@@ -7,23 +7,30 @@ date_default_timezone_set('@@TIMEZONE@@');
  */
 Director::set_environment_type('@@SS_ENVIRONMENT_TYPE@@');
 SS_Log::add_writer(new SS_LogFileWriter('@@ERROR_LOG_FILE@@'), SS_Log::WARN, '<=');
-// The following removes the suffixes in dev mode for readability in Firebug
+Email::setAdminEmail('@@ADMIN_EMAIL@@');
 if( Director::isDev() ) {
+	// The following removes the suffixes in dev mode for readability in Firebug
 	Requirements::set_suffix_requirements(false);
 	Email::send_all_emails_to('@@DEV_EMAIL@@');
+	// If you're using the SMS module these could be useful:
+	// SMS::send_all_messages_to('61422777262');
+	// SMS::log_all_messages(); // disables actual sending
 }
-else if( Director::isTest() ) {
-	BasicAuth::protect_entire_site();
-}
-else if( Director::isLive() ) {
-	SS_Log::add_writer(new SS_LogEmailWriter('errors@dimension27.com'), SS_Log::WARN, '<=');
+else {
+	if( Director::isTest() ) {
+		BasicAuth::protect_entire_site();
+	}
+	else if( Director::isLive() ) {
+		SS_Log::add_writer(new SS_LogEmailWriter('@@ERROR_EMAIL@@'), SS_Log::WARN, '<=');
+	}
 }
 
 /*
  * Database and project settings, using the ConfigureFromEnv.php approach (see http://bit.ly/euB0Hz)
  */
-$GLOBALS['database'] = '@@DB_NAME@@';
-global $project;
+global $database, $project, $theme;
+$database = '@@DB_NAME@@';
+$theme = '@@SS_THEME@@';
 $project = 'mysite';
 require_once('conf/ConfigureFromEnv.php');
 
@@ -31,25 +38,26 @@ require_once('conf/ConfigureFromEnv.php');
  * Various settings.
  */
 MySQLDatabase::set_connection_charset('utf8');
-SSViewer::set_theme('@@SS_THEME@@');
+SSViewer::set_theme($theme);
 i18n::set_locale('en_GB');
 SiteTree::enable_nested_urls();
 GD::set_default_quality(80);
 // Object::add_extension('LeftAndMain', 'MyLeftAndMain');
 // Object::add_extension('SiteConfig', 'MySiteConfig');
-// HideEmail_Controller::set_allowed_domains(array($_SERVER['HTTP_HOST']));
+FulltextSearchable::enable();
+
+/*
+ * Google Analytics settings.
+ */
+// GoogleLogger::activate('UA-22111211-1'); // hard-code ID
+// GoogleAnalyzer::activate('22111211', "[USERNAME]", "[PASSWORD]"); // hard-code ID and login
 
 /*
  * Static publisher setup.
  */
-// Object::add_extension('SiteTree', 'FilesystemPublisher("cache/", "html")');
-// FilesystemPublisher::set_static_base_url(Director::absoluteBaseURL());
-// if( class_exists('Subsite') ) { FilesystemPublisher::$domain_based_caching = true; }
-
-/*
- * Enable fulltext searching.
- */
-FulltextSearchable::enable();
+Object::add_extension('SiteTree', 'FilesystemPublisher("cache/", "html")');
+FilesystemPublisher::set_static_base_url(Director::absoluteBaseURL());
+Object::add_extension('SiteTree', 'FilesystemPublisherExtension'); // this class is in the ss-tools module
 
 /*
  * TinyMCE HtmlEditorConfig settings
@@ -61,27 +69,31 @@ $tinyMCEOptions = array(
 		'theme_advanced_styles' => 'Float left=floatLeft;Float right=floatRight', 
 		'theme_advanced_path' => 'true',
 		'theme_advanced_statusbar_location' => 'bottom',
-		'content_css' => Director::baseURL().'themes/'.SSViewer::current_theme().'/css/editor.css'
+		'content_css' => Director::baseURL().'themes/'.$theme.'/css/editor.css',
+		'body_class' => 'typography',
 );
+// attach the options to the HtmlEditorConfig in case we want to use them elsewhere (eg. SimpleTinyMCEField)
+HtmlEditorConfig::get('cms')->options = $tinyMCEOptions;
 HtmlEditorConfig::get('cms')->setOptions($tinyMCEOptions);
 HtmlEditorConfig::get('cms')->enablePlugins('inlinepopups');
-// HtmlEditorConfig::get('cms')->setOption('height', '350px');
-
-/*
- * Mollom configuration (if required).
- */
-// Mollom::setPublicKey('enter-your-mollom-public-key');
-// Mollom::setPrivateKey('enter-your-mollom-private-key');
-// SpamProtectorManager::set_spam_protector('MollomSpamProtector');
 
 /*
  * Admin customisation.
  */
-// LeftAndMain::setLogo('/path/to/image', 'style');
-// LeftAndMain::set_loading_image('/path/to/image');
-// LeftAndMain::setApplicationName('/path/to/image');
+// LeftAndMain::setLogo('/basf/images/admin/logo.png', '');
+// LeftAndMain::set_loading_image('/basf/images/admin/loading.gif');
+// LeftAndMain::setApplicationName('BASF CMS');
 
 /*
- * Setup the security key for the Email_BounceHandler
+ * Define a security key for the Email_BounceHandler
  */
 define('EMAIL_BOUNCEHANDLER_KEY', '453616c60bfc87e41c146d3b90b85b9a');
+
+/*
+ * Project-specific settings
+ */
+// HideEmail_Controller::set_allowed_domains(array($_SERVER['HTTP_HOST']));
+// Mollom::setPublicKey('enter-your-mollom-public-key');
+// Mollom::setPrivateKey('enter-your-mollom-private-key');
+// SpamProtectorManager::set_spam_protector('MollomSpamProtector');
+// FlickrService::setAPIKey('783507fe767bf2ce3a1b4bfa7cb805dc');

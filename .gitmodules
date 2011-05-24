@@ -1,9 +1,24 @@
+# nb. Submodules must be added using:
+# git submodule add <repo> <directory>
+# 
+# To add the modules that are commented-out below, uncomment them below and then run
+# the above command for each.
+
+#
+# SilverStripe core sapphire and cms modules:
+#
+
 [submodule "public/sapphire"]
 	path = public/sapphire
 	url = git@github.com:dimension27/sapphire.git
 [submodule "public/cms"]
 	path = public/cms
 	url = git@github.com:dimension27/silverstripe-cms.git
+
+#
+# The usual suspects:
+#
+
 [submodule "public/dataobject_manager"]
 	path = public/dataobject_manager
 	url = git@github.com:dimension27/DataObjectManager.git
@@ -13,18 +28,39 @@
 [submodule "public/hideemail"]
 	path = public/hideemail
 	url = git@github.com:dimension27/silverstripe-hideemail.git
-[submodule "public/userforms"]
-	path = public/userforms
-	url = git@github.com:dimension27/silverstripe-userforms.git
 [submodule "public/googleanalytics"]
 	path = public/googleanalytics
 	url = git@github.com:dimension27/silverstripe-googleanalytics.git
 [submodule "public/googlesitemaps"]
 	path = public/googlesitemaps
 	url = git@github.com:dimension27/silverstripe-googlesitemaps.git
-[submodule "public/themes/silverstripe-blackcandy"]
-	path = public/themes/silverstripe-blackcandy
-	url = git@github.com:dimension27/silverstripe-blackcandy.git
 [submodule "public/ss-tools"]
 	path = public/ss-tools
 	url = git@github.com:dimension27/silverstripe-tools.git
+
+#
+# Project-specific modules
+#
+
+# [submodule "public/userforms"]
+# 	path = public/userforms
+# 	url = git@github.com:dimension27/silverstripe-userforms.git
+# [submodule "public/subsites"]
+# 	path = public/subsites
+# 	url = git@github.com:silverstripe/silverstripe-subsites.git
+# [submodule "public/newsletter"]
+# 	path = public/newsletter
+# 	url = git@github.com:silverstripe-labs/silverstripe-newsletter.git
+# [submodule "public/mobile"]
+#	path = public/mobile
+#	url = git@github.com:silverstripe/silverstripe-mobile.git
+# [submodule "public/cmsworkflow"]
+#	path = public/cmsworkflow
+#	url = git@github.com:silverstripe/silverstripe-cmsworkflow.git
+
+#
+# Don't know why this is here
+#
+[submodule "public/themes/silverstripe-blackcandy"]
+	path = public/themes/silverstripe-blackcandy
+	url = git@github.com:dimension27/silverstripe-blackcandy.git
