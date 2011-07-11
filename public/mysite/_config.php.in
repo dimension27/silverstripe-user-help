@@ -66,7 +66,7 @@ HtmlEditorConfig::get('cms')->insertButtonsAfter('formatselect', 'removeformat')
 $tinyMCEOptions = array(
 		'theme_advanced_blockformats' => 'p,div,h1,h2,h3,h4', 
 		// IMPORTANT: no trailing semicolon
-		'theme_advanced_styles' => 'Float left=floatLeft;Float right=floatRight', 
+		'theme_advanced_styles' => 'No style=noStyle;Float left=floatLeft;Float right=floatRight', 
 		'theme_advanced_path' => 'true',
 		'theme_advanced_statusbar_location' => 'bottom',
 		'content_css' => Director::baseURL().'themes/'.$theme.'/css/editor.css',
