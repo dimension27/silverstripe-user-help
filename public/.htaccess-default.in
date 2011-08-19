@@ -1,16 +1,16 @@
 <IfModule mod_rewrite.c>
 	# RewriteEngine On
-	# Match domain.com.au with no www or with "live." at the start
-	# RewriteCond %{HTTP_HOST} ^illuminateyoga.com.au(:[0-9]+)? [NC]
-	# And redirect any request to www.domain.com.au with the port (if specified)
+	# Match any domain that's not the primary domain
+	# RewriteCond %{HTTP_HOST} !^www.domain.com.au(:[0-9]+)? [NC]
+	# And redirect to the primary domain (with the port if specified)
 	# with an HTTP 301 code (R=301). This is the last rule for these conditions (L)
 	# RewriteRule ^(.*) http://www.illuminateyoga.com.au%1/$1 [R=301,L]
 </IfModule>
 
 # Prevent requests to favicon.ico
 <IfModule mod_rewrite.c>
-	# RewriteCond %{THE_REQUEST} favicon.ico [NC]
-	# RewriteRule (.*) /favicon.ico [R=403,L] 
+	RewriteCond %{THE_REQUEST} favicon.ico [NC]
+	RewriteRule (.*) /favicon.ico [R=403,L] 
 </IfModule>
 
 ### SILVERSTRIPE START ###

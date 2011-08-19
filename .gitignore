@@ -5,6 +5,7 @@ _ss_environment.php
 config/apache.conf
 config/crontab.txt
 config/*@*.cfg
+config/logrotate.txt
 db/init.mysql.sql
 db/dumps/*-*-*.sql.gz
 logs/*.log
@@ -13,6 +14,8 @@ logs/*.pid
 public/.htaccess-default
 public/.htaccess
 public/mysite/_config.php
+public/subsites/host-map.php
+public/cache/*
 public/silverstripe-cache/*
 script/apachectl
 script/env.php

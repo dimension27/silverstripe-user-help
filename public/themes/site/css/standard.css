@@ -1,19 +1,15 @@
-/* reset.css */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
-article, aside, dialog, figure, footer, header, hgroup, nav, section {display:block;}
-body {line-height:1.2;}
-table {border-collapse:separate;border-spacing:0;}
-caption, th, td {text-align:left;font-weight:normal;}
-table, td, th {vertical-align:middle;}
-blockquote:before, blockquote:after, q:before, q:after {content:"";}
-blockquote, q {quotes:"" "";}
-a img {border:none;}
-
 /*
  * Provides standard text and content styling.
  */
 
-body, h1, .h1,  h2, .h2,  h3, .h3,  h4, .h4,  h5, .h5, h6, .h6 {
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	line-height:1.2;
+}
+body, h1, .h1, h2, .h2,  h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	font-family: Arial, Helvetica, sans-serif;
 }
 h1, .h1 {
@@ -41,12 +37,16 @@ abbr,acronym {
 em {
 	font-style:italic;
 }
-blockquote,ul,ol,dl {
+blockquote, ul, ol, dl {
 	margin: 0.5em 0 1.5em;
 }
 ol, ul, dl {
 	margin-left: 1em;
 	padding-left: 0;
+}
+.ie6 ol,
+.ie7 ol {
+	padding-left: 5px;
 }
 ol li {
 	list-style: decimal outside;	
@@ -57,6 +57,9 @@ ul li {
 ul li,
 ol li {
 	margin: 0.2em 1em;
+}
+ol li {
+	margin-left: 1.6em;
 }
 ol ol, ul ul, ol ul, ul ol {
 	margin-top: 0;
@@ -80,7 +83,6 @@ a img {
 	border: 0;
 }
 p {
-	line-height: 1.2;
 	margin: 0.5em 0px 1em;;
 }
 li p {
@@ -92,9 +94,6 @@ pre, code, .code {
 	text-align: left;
 }
 strong, b {
-	font-weight: bold;
-}
-th {
 	font-weight: bold;
 }
 input, textarea, select {

@@ -23,7 +23,7 @@
 		</div>
 		<div class="clearing"></div>
 	</div>
-	<% if PastMember %>
+	<% if PastAdmin %>
 		$SilverStripeNavigator
 	<% end_if %>	
 </body>

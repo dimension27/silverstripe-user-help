@@ -15,10 +15,10 @@ FILE_MODE="664"
 setWritable() {
 	FILE=$1
 	USER=$2
-	GROUP=$2
+	GROUP=$3
 	if [ -f "$FILE" ]; then
 		chmod $FILE_MODE $FILE
-		chown $USER:$GROUP $1
+		chown $USER:$GROUP $FILE
 	else
 		find $FILE -type d -not -path '*/.*' -print0 | xargs -0 chmod $DIR_MODE
 		find $FILE -type d -not -path '*/.*' -print0 | xargs -0 chmod a+s
@@ -28,6 +28,9 @@ setWritable() {
 		find $FILE -not -path '*/.*' -print0 | xargs -0 chown $USER:$GROUP
 	fi
 }
+
+mkdir -p public/cache
+mkdir -p public/silverstripe-cache
 
 setWritable "public/assets" $SERVER_USER $SERVER_GROUP
 setWritable "public/cache" $SERVER_USER $SERVER_GROUP

@@ -1,0 +1,6 @@
+"@@BASE_PATH@@/logs/*.log" {
+	rotate 10
+	weekly
+	compress
+	notifempty
+}

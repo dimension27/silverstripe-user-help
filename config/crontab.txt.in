@@ -1,2 +1,5 @@
+#
+# This is the apache crontab file, because sake needs to be run as the webserver user
+#
 MAILTO=admin@dimension27.com
-0    0    *    *    *    cd "@@BASE_PATH@@/public" && rm -rf cache/* && ./sapphire/sake dev/buildcache flush=all > /dev/null
+0	0	*	*	*	@@BASE_PATH@@/rebuild-cache.sh > /dev/null

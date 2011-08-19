@@ -42,6 +42,9 @@
 # Project-specific modules
 #
 
+[submodule "public/banners"]
+	path = public/banners
+	url = git@github.com:dimension27/silverstripe-page-banners.git
 # [submodule "public/userforms"]
 # 	path = public/userforms
 # 	url = git@github.com:dimension27/silverstripe-userforms.git
@@ -57,10 +60,3 @@
 # [submodule "public/cmsworkflow"]
 #	path = public/cmsworkflow
 #	url = git@github.com:silverstripe/silverstripe-cmsworkflow.git
-
-#
-# Don't know why this is here
-#
-[submodule "public/themes/silverstripe-blackcandy"]
-	path = public/themes/silverstripe-blackcandy
-	url = git@github.com:dimension27/silverstripe-blackcandy.git

@@ -13,6 +13,7 @@ class Page extends SiteTree {
 	 * @return FieldSet The fields to be displayed in the CMS.
 	 */
 	function getCMSFields() {
+		return parent::getCMSFields();
 	}
 
 }
@@ -41,18 +42,17 @@ class Page_Controller extends ContentController {
 
 	function getCombinedJsFiles() {
 		return array(
-				"sapphire/thirdparty/jquery/jquery.js",
-				// "themes/site/js/browser.js",
-				// "themes/site/js/cufon.js",
-				// "themes/site/js/amasis.font.js",
-				"themes/site/js/site.js"
+				THIRDPARTY_DIR.'/jquery/jquery-packed.js', // using jquery-packed.js to avoid duplicate jquery from modules
+				// 'themes/site/js/browser.js',
+				// 'themes/site/js/cufon.js',
+				// 'themes/site/js/amasis.font.js',
+				'themes/site/js/site.js'
 		);
 	}
 
 	function getCombinedCSSFiles() {
 		return array(
 				'themes/site/css/standard.css',
-				'themes/site/css/form.css',
 				'themes/site/css/theme.css',
 				'themes/site/css/theme-style.css'
 		);
@@ -98,6 +98,19 @@ class Page_Controller extends ContentController {
 			}
 		}
 		return $rv;
+	}
+
+	/**
+	 * Returns true if the current browser has had an Admin user login in the last 90 days.
+	 */
+	function PastAdmin() {
+		if( Permission::check('ADMIN') ) {
+			Cookie::set('PastAdmin', true);
+			return true;
+		}
+		else if( isset($_COOKIE['PastAdmin']) ) {
+			return $_COOKIE['PastAdmin'];
+		}
 	}
 
 }

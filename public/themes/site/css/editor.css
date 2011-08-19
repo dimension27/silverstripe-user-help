@@ -1,9 +1,9 @@
-/**
+/*
  * This support file is used to style the WYSIWYG editor in the CMS
  */
 
 @import url("standard.css");
-@import url("site-style.css");
+@import url("theme-style.css");
 
 body.mceContentBody {
 	min-height: 200px;
