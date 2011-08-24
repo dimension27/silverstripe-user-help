@@ -60,6 +60,3 @@
 # [submodule "public/cmsworkflow"]
 #	path = public/cmsworkflow
 #	url = git@github.com:silverstripe/silverstripe-cmsworkflow.git
-[submodule "public/forum"]
-	path = public/forum
-	url = https://github.com/silverstripe/silverstripe-forum
