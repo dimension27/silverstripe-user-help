@@ -97,3 +97,8 @@ define('EMAIL_BOUNCEHANDLER_KEY', '453616c60bfc87e41c146d3b90b85b9a');
 // Mollom::setPrivateKey('enter-your-mollom-private-key');
 // SpamProtectorManager::set_spam_protector('MollomSpamProtector');
 // FlickrService::setAPIKey('783507fe767bf2ce3a1b4bfa7cb805dc');
+
+/*
+ * PDF support - not currently working
+ */
+// Object::add_extension('Page_Controller','HelpToPdf');
