@@ -3,10 +3,7 @@
 # Runs sake as the webserver user
 
 source `dirname $0`/env.sh
-SUDO="sudo -u $SERVER_USER"
-if [ `whoami` == "$SERVER_USER" ]; then
-	SUDO=""
-fi
+unset HTTP_HOST # cli-script.php complains if HTTP_HOST is set
 cd "$BASE_PATH/public"
-$SUDO ./sapphire/sake $@
+`getSudo` ./sapphire/sake $@
 echo
