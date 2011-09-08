@@ -31,23 +31,24 @@ foreach( preg_split('/\s*,\s*/', $tableList) as $table ) {
 	$tables[$table][] = $column;
 }
 
-$renameFiles = array();
 function contentReplace( $tables, $searchReplace ) {
-	foreach( $tables as $table => $columns ) {
-		foreach( $columns as $column ) {
-			foreach( $searchReplace as $search => $replace ) {
+	$renameFiles = array();
+	foreach( $searchReplace as $search => $replace ) {
+		foreach( $tables as $table => $columns ) {
+			foreach( $columns as $column ) {
 				// echo "SELECT ID, $column FROM $table WHERE $column LIKE '%".addslashes($search)."%';\n";
 				echo "UPDATE $table SET $column = REPLACE($column, '".addslashes($search)."', '".addslashes($replace)."') "
 						."WHERE $column LIKE '%".addslashes($search)."%';\n";
-				$file = BASE_PATH.'/public/'.$search;
-				if( file_exists($file) ) {
-					$dest = BASE_PATH."/public/$replace";
-					if( !is_dir(dirname($dest)) ) {
-						mkdir(dirname($dest));
-					}
-					$renameFiles[$file] = "mv '$file' '$dest'";
-				}
 			}
+		}
+		$file = BASE_PATH.'/public/'.$search;
+		if( file_exists($file) ) {
+			$dest = BASE_PATH."/public/$replace";
+			if( !is_dir(dirname($dest)) ) {
+				$dir = dirname($dest);
+				$renameFiles[$dir] = "mkdir '".$dir."'";
+			}
+			$renameFiles[$file] = "mv '$file' '$dest'";
 		}
 	}
 	if( $renameFiles ) {
