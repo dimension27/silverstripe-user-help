@@ -1,0 +1,132 @@
+/** ----------------------------------------------------------
+ *
+ * Contains the styles for just the user help site.
+ *
+ * @author Michael Andrewartha <michael at silverstripe dot com>
+ * ------------------------------------------------------- */
+
+/* Helpers */   	 	 
+.clear { clear: both; }
+.left-col { float: left; }   	 	 
+.right-col { float: right; }
+
+
+/* Content Area */
+#Layout {
+	width: 940px;
+	margin: 0 auto;
+	padding-top: 30px;
+}
+	#Content,
+	#login-container {
+		display: inline;
+		width:695px;
+		overflow: hidden;
+	}
+
+/* typography */
+.typography .introduction { 
+	color: #3E4D48; 
+	font-size: 18px; 
+	line-height: 25px; 
+}
+
+/* Sidebar */
+#Sidebar {
+	display:inline;
+	width:220px;
+	overflow: hidden;
+}
+	#Sidebar ul {
+		overflow: hidden;
+		margin: 0;
+	}
+	#sub-navigation li { background: none; }
+		#Sidebar li { 
+			list-style: none;
+			margin: 0;
+			padding-left: 0;
+		}
+			#Sidebar li a {
+				display: block;
+				color: #0973A6;
+				text-decoration: none;
+				font-size: 12px;
+				width: 217px;
+				cursor: pointer;
+			}
+				#Sidebar li a span {
+					display: block;
+					border-top: 1px solid #0973A6;
+					margin-right: 12px;
+					line-height: 1.2em;
+					padding: 7px 0 6px 4px;
+					width: 205px;
+				}
+			#Sidebar li.link a { color: #0973A6; }
+			#Sidebar li a:focus { color: #888; }
+				#Sidebar li.first a span { border-top: 2px solid #0973A6; }
+				#Sidebar li.section ul li a span,
+				#Sidebar li.current ul li a span { border-top: 1px solid #B9C7C3; }
+			#Sidebar li.current a {
+				background: url(../images/arrow.gif) center right no-repeat;
+				color: #4D4D4D;
+				-moz-background-size: 42px 100%;
+				-webkit-background-size: 42px 100%;
+				background-size: 42px 100%;
+			}
+				#Sidebar li.current ul li a { background: none; }
+				#Sidebar li.current ul li a { color: #0973A6; }
+				#Sidebar ul li a:hover,
+				#Sidebar ul li.current a:hover { color: #667D76; }
+
+				/* Second Level Menu */
+				#Sidebar ul ul {
+					margin-left: 20px;
+					overflow: hidden;
+				}
+				#Sidebar ul ul li a {
+					width: 197px;
+				}
+					#Sidebar ul ul li a span {
+						width: 185px;
+						margin-right: 12px;
+					}
+					#Sidebar ul ul ul li a {
+						width: 177px;
+					}
+						/* Third Level Menu */
+						#Sidebar ul ul ul li a span {
+							width: 165px;
+							margin-right: 12px;
+						}
+
+/* Comments */
+#CommentHolder ul li {
+	background: none;
+	padding: 15px;
+	margin: 0;
+}
+	#CommentHolder ul li.odd {
+		background: #fff;
+	}
+	#CommentHolder .actionLinks {
+		margin: 0;
+	}
+	#CommentHolder .actionLinks li {
+		display: inline;
+		padding: 0;
+		margin-right: 10px;
+	}
+
+/* Search Results */
+#search-results {
+	margin-bottom: 18px;
+}
+	#search-results table {
+		width: 100%;
+	}
+		#search-results td {
+			border: 1px solid #ddd;
+			padding: 5px;
+		}

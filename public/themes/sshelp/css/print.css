@@ -1,0 +1,70 @@
+/** ----------------------------------------------------------
+ *
+ * Contains the print styles for just the user help site.
+ *
+ * @author Michael Andrewartha <michael at silverstripe dot com>
+ * ------------------------------------------------------- */
+
+/* Helpers */
+.clear { clear: auto; }
+.left-col { float: none !important; }
+.right-col { float: none !important; }
+	
+/* Logo */
+#Logo {
+	width: auto !important;
+	margin: 0px;
+}
+	#Logo h1 {
+		display: block;
+		float: none !important;
+		font-family: Arial, sans-serif;
+		padding: 0px;
+	}
+		#Logo h1 a {
+			color: #000000;
+		}
+			#Logo h1 a span,
+			#Logo h1 a img {
+				float: left;
+				line-height: 2.6em;
+			}
+			#Logo h1 a span {
+				margin-left: 10px;
+				font-size: 20px;
+			}
+		
+	#Logo p {
+		display: none;
+	}
+
+/* Content Area */
+#Layout {
+	width: auto !important;
+	overflow: visible !important;
+}
+	#Content {
+		float: none;
+		display: block;
+		width: auto !important;
+		overflow: visible !important;
+	}
+		#Content * {
+			float: none;
+			page-break-inside: avoid;
+			color: #000000;
+		}
+
+/* typography */
+.typography h1 {
+	margin: -7px 0 7px 0;
+	color: #000000;
+}
+.typography .introduction { 
+	color: #3E4D48; 
+	font-size: 18px; 
+	line-height: 25px; 
+}
+.typography blockquote {
+	color: #000000;
+}
